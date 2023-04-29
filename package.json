@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "style": "sass --watch virtual-keyboard/scss/index.scss virtual-keyboard/style/style.css"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Dimcom1010/virtual-keyboard/issues"
   },
-  "homepage": "https://github.com/Dimcom1010/virtual-keyboard#readme"
+  "homepage": "https://github.com/Dimcom1010/virtual-keyboard#readme",
+  "devDependencies": {
+    "sass": "^1.61.0"
+  }
 }
