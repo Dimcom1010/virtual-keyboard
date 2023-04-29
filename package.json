@@ -18,6 +18,12 @@
   },
   "homepage": "https://github.com/Dimcom1010/virtual-keyboard#readme",
   "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-plugin-react": "^7.32.2",
     "sass": "^1.61.0"
+  },
+  "dependencies": {
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5"
   }
 }
