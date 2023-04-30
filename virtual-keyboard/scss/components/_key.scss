@@ -1,6 +1,7 @@
 
 
 .key {
+    position: relative;
     font-weight: 600;
     color: $key-text;
     padding: 1em 1.5em;
@@ -50,4 +51,9 @@
     &.press::before {
         transform: translate3d(0, 0, -1em);
       }
+}
+.key__subkey{
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
 }
