@@ -5,7 +5,7 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
-        "airbnb-base"
+        // "airbnb-base"
     ],
     "overrides": [
     ],
