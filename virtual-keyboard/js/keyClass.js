@@ -1,19 +1,26 @@
 export default class KeyClass {
     // методы класса
     constructor(value, width) {
-        console.log('constructor');
         this.value = value;
         this.width = width;
     }
-    
 }
 
-export function createKey(key) {
-    console.log('createKey')
-    const body = document.querySelector('#body');
-    const keyElement = document.createElement('div');
+export const createKey = (key) => {
+    const body = document.querySelector('#keyboard');
+    const keyElement = document.createElement('button');
     keyElement.className = "key";
     keyElement.innerHTML = `${key.value}`;
+    _addEvent(keyElement, key.value)
     body.append(keyElement);
+}
+const _onPressAction = (value,keyElement) => {
+    console.log(value)
 
+}
+
+
+const _addEvent = (keyElement, value) => {
+    console.log(keyElement)
+    keyElement.addEventListener("click", _onPressAction.bind(this, value,keyElement))
 }
