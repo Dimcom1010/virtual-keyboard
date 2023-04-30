@@ -1,9 +1,11 @@
 
+
 .key {
     font-weight: 600;
     color: $key-text;
-    padding: 1.25em 2em;
+    padding: 1em 1.5em;
     background: $key-bg;
+    font-size: 1.3em;
     border: 2px solid $key-border;
     border-radius: 0.75em;
     transition: transform 0.15s;
@@ -38,6 +40,14 @@
         transform: translateY(0.6em);
     }
     &:active::before {
+        transform: translate3d(0, 0, -1em);
+      }
+    
+    &.press{
+        background: $key-bg-hover;
+        transform: translateY(0.6em);
+    }
+    &.press::before {
         transform: translate3d(0, 0, -1em);
       }
 }
