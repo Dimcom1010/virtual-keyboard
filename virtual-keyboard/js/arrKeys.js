@@ -328,28 +328,28 @@ export let arrayKeys = [
         width: 'auto', subkey: ""
     }
 ]
-export const toUpperCase = () => {
+export function toUpperCase() {
     arrayKeys = arrayKeys.map(e => {
         if (e.key.length == 1) {
             e.key = e.key.toUpperCase()
         }
         return e
     })
-};
-export const toLowerCase = () => {
+}
+export function toLowerCase() {
     arrayKeys = arrayKeys.map(e => {
         if (e.key.length == 1) {
             e.key = e.key.toLowerCase()
         }
         return e
     })
-};
-export const pressShift = () => {
+}
+export function pressShift() {
     arrayKeys = arrayKeys.map(e => {
         if (e.subkey.length) {
-            e.key = e.subkey;
-            e.subkey = e.key;
+             [e.key, e.subkey]  =  [e.subkey, e.key] ;
         }
         return e
     })
-};
+}
+

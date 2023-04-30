@@ -1,13 +1,32 @@
 
-// import { onPressAction} from './keyClass.js'
 
-const arr=[]
-export const keyHandler = (event) => {
-    arr.push({ code:event.keyCode,key:event.key ,width:1})
-    // onPressAction(event.key`Code)
-    // function checkPhoneKey(key) {
+import { pressShift,toUpperCase,toLowerCase } from './arrKeys.js'
+import { drowKeyboaard } from './index.js'
+import { onPressAction } from './keyClass.js'
+
+
+let lowerCase=true
+
+
+export function keyHandler(event) {
     
-    //     return ((key >= '0' && key <= '9') || key == '+' || key == '(' || key == ')' || key == '-' ||
-    //       key == 'ArrowLeft' || key == 'ArrowRight' || key == 'Delete' || key == 'Backspace')?key:'';
-    //   }
+    if (event.key === 'Shift') {
+        if(!event.repeat)
+        {pressShift();
+        lowerCase?toUpperCase():toLowerCase();
+        lowerCase=!lowerCase
+        drowKeyboaard();}
+    } else if(event.key === 'Tab'){
+        if(!event.repeat && event.type==="keydown"){
+            lowerCase?toUpperCase():toLowerCase();
+            lowerCase=!lowerCase
+            drowKeyboaard();
+        }
+    }
+    else{
+        onPressAction(event.key,false)
+    }
+
+
+
 }
