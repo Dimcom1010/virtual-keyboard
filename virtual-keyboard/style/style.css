@@ -1,9 +1,14 @@
 @charset "UTF-8";
 /* цвета */
+* {
+  box-sizing: content-box;
+}
+
 body {
-  width: 100%;
-  height: 100vh;
   background-color: #cdcdcd;
+  padding: 50px;
+  margin: 0;
+  box-sizing: content-box;
 }
 
 button {
@@ -16,6 +21,16 @@ button {
   text-decoration: none;
   font-size: inherit;
   font-family: inherit;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .key {

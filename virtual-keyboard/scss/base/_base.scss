@@ -1,7 +1,11 @@
+*{
+    box-sizing: content-box;
+}
 body{
-    width: 100%;
-    height: 100vh;
     background-color: $color-dark-s;
+    padding: 50px;
+    margin: 0;
+    box-sizing: content-box;
 }
 button {
     position: relative;
@@ -13,4 +17,13 @@ button {
     text-decoration: none;
     font-size: inherit;
     font-family: inherit;
+  }
+  textarea{
+    width: 100%;
+    height: 200px;
+    outline: none;
+    resize: none;
+    overflow: auto;
+    padding: 0;
+    margin: 0;
   }
