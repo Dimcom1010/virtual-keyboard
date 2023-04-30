@@ -1,0 +1,15 @@
+.key{
+    display: flex;
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    background-color: antiquewhite;
+    align-items: center;
+    justify-content: center;
+    transition: .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+    &:hover{
+        background-color: rgb(170, 105, 21);
+    }
+}
