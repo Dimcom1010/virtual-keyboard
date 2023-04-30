@@ -7,20 +7,23 @@ export default class KeyClass {
 }
 
 export const createKey = (key) => {
-    const body = document.querySelector('#keyboard');
+    const BODY = document.querySelector('#keyboard');
     const keyElement = document.createElement('button');
     keyElement.className = "key";
     keyElement.innerHTML = `${key.value}`;
     _addEvent(keyElement, key.value)
-    body.append(keyElement);
+    BODY.append(keyElement);
 }
-const _onPressAction = (value,keyElement) => {
-    console.log(value)
+export const onPressAction = (value) => {
+    
+    const TEXTAREA = document.querySelector('#textarea');
+    let textareaValue=TEXTAREA.value
+    TEXTAREA.value = textareaValue +value
 
 }
 
 
 const _addEvent = (keyElement, value) => {
     console.log(keyElement)
-    keyElement.addEventListener("click", _onPressAction.bind(this, value,keyElement))
+    keyElement.addEventListener("click", onPressAction.bind(this, value,keyElement))
 }
