@@ -1,22 +1,19 @@
-export default class KeyClass {
-    // методы класса
-    constructor(value, width) {
-        this.value = value;
-        this.width = width;
-    }
-}
+
 
 export function createKey(key) {
     const BODY = document.querySelector('#keyboard');
     const keyElement = document.createElement('button');
     keyElement.className = "key";
+    keyElement.dataset.code=`${key.code}`;
     keyElement.style.gridColumn = `${key.width}`;
-    keyElement.innerHTML = `${key.value}`;
-    _addEvent(keyElement, key.value)
+    keyElement.innerHTML = `${key.key}`;
+    _addEvent(keyElement, key.key);
     BODY.append(keyElement);
 }
-export function onPressAction(value,keyboard) {
 
+
+export function onPressAction(value) {
+    // console.log('onPressAction *******',value)
     const TEXTAREA = document.querySelector('#textarea');
     TEXTAREA.focus()
     let textareaValue = TEXTAREA.value
@@ -49,20 +46,16 @@ export function onPressAction(value,keyboard) {
     } else if (value === 'ArrowDown') {
         console.log(value);
     } else {
-        if(keyboard){
             const positionCaret = _getCaretPosition(TEXTAREA)
             TEXTAREA.value = textareaValue.substr( 0, positionCaret ) + value  + textareaValue.substr( positionCaret-1 + value.length )
             TEXTAREA.setSelectionRange(positionCaret+1,positionCaret+1);
-        }
-
-       
     }
 }
 
 
-
+// нажатие мышью
 const _addEvent = (keyElement, value) => {
-    keyElement.addEventListener("click", onPressAction.bind(this, value))
+    keyElement.addEventListener("click", ()=> onPressAction(value))
 }
 
 function _getCaretPosition(element) {
