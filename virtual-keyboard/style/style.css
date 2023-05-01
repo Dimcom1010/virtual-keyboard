@@ -36,11 +36,12 @@ textarea {
 .key {
   position: relative;
   font-weight: 600;
-  color: #0350f5;
-  padding: 1em 1.5em;
-  background: #fff700;
+  min-width: 1em;
+  color: #626262;
+  padding: 1.2em 1em;
+  background: #ffffff;
   font-size: 1.3em;
-  border: 2px solid #21fa00;
+  border: 2px solid #cacaca;
   border-radius: 0.75em;
   transition: transform 0.15s;
   transform-style: preserve-3d;
@@ -54,27 +55,27 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #1c1c1c;
+  background: #a8a8a8;
   border-radius: inherit;
   transform: translate3d(0, 0.6em, -1em);
   transition: transform 0.15s, box-shadow 0.15s;
 }
 .key:hover {
-  background: #ffa200;
+  background: #e8e8e8;
   transform: translateY(0.1em);
 }
 .key:hover::before {
   transform: translate3d(0, 0.5em, -1em);
 }
 .key:active {
-  background: #ffa200;
+  background: #e8e8e8;
   transform: translateY(0.6em);
 }
 .key:active::before {
   transform: translate3d(0, 0, -1em);
 }
 .key.press {
-  background: #ffa200;
+  background: #e8e8e8;
   transform: translateY(0.6em);
 }
 .key.press::before {
@@ -89,8 +90,8 @@ textarea {
 
 #keyboard {
   margin: auto;
-  max-width: 1600px;
-  gap: 15px;
+  max-width: 1700px;
+  gap: 10px;
   display: grid;
   grid-template-columns: repeat(15, 1fr);
 }
