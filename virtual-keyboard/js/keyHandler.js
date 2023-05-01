@@ -8,7 +8,7 @@ let shift = false
 let arrPressKes = new Set()
 
 export function keyHandler(event) {
-
+console.log(event);
     event.type === "keydown" && (addStule(event.code))
     event.type === "keyup" && (removeStule(event.code))
 
@@ -40,7 +40,24 @@ export function keyHandler(event) {
                 drowKeyboaard();
             }
         }
-    } else {
+    } 
+    else if (event.code === 'ShiftRight') {
+        if (!event.repeat) {
+            pressShift();
+            drowKeyboaard();
+            if (event.type === "keydown") {
+                shift = true;
+                typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
+                drowKeyboaard();
+            }
+            if (event.type === "keyup") {
+                shift = false;
+                typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
+                drowKeyboaard();
+            }
+        }
+    } 
+    else {
         if (event.type === "keydown") {
             const TEXTAREA = document.querySelector('#textarea');
             TEXTAREA.focus()
