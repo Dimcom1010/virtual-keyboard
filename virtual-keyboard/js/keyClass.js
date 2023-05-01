@@ -5,7 +5,7 @@ export function createKey(key) {
     const keyboard = document.querySelector('#keyboard');
     const keyElement = document.createElement('button');
     keyElement.className = "key";
-    keyElement.dataset.code = `${key.code}`;
+    keyElement.dataset.code = `${key.keyCode}`;
     keyElement.style.gridColumn = `${key.width}`;
     keyElement.innerHTML = `${key.key}`;
 
