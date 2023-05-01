@@ -2,15 +2,14 @@ import { pressShift, toUpperCase, toLowerCase } from './arrKeys.js'
 import { drowKeyboaard } from './index.js'
 import { onPressAction } from './keyClass.js'
 
-let capslock=false
+
+let capslock = false
 let shift = false
 let alt = false
 
 
 export function keyHandler(event) {
-
     if (shift && alt) {
-
         if (event.type === "keydown") {
             addStule(16);
             addStule(18);
@@ -20,14 +19,32 @@ export function keyHandler(event) {
             alt = false;
             removeStule();
         }
-    }else
-     if (event.key === 'Shift') {
+    }
+    else if (event.key === 'Tab') {
+        if (!event.repeat && event.type === "keydown") {
+            onPressAction(event.key)
+            drowKeyboaard();
+            addStule(event.keyCode)
+        }
+        if (event.type === "keyup") {
+            removeStule()
+        }
+    }
+    else if (event.key === 'CapsLock') {
+        if (!event.repeat && event.type === "keydown") {
+            typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
+            capslock = !capslock
+            drowKeyboaard();
+            addStule(event.keyCode)
+        }
+        if (event.type === "keyup") {
+            removeStule()
+        }
+    }
+    else if (event.key === 'Shift') {
         if (!event.repeat) {
             pressShift();
-
-
-            typeCase(shift,capslock) ? toUpperCase() : toLowerCase();
-            
+            typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
             drowKeyboaard();
             if (event.type === "keydown") {
                 shift = true;
@@ -39,9 +56,9 @@ export function keyHandler(event) {
                 drowKeyboaard();
                 removeStule();
             }
-
         }
-    } else if (event.key === 'Alt') {
+    }
+    else if (event.key === 'Alt') {
         if (!event.repeat) {
             if (event.type === "keydown") {
                 // alt = true;
@@ -53,21 +70,12 @@ export function keyHandler(event) {
             }
 
         }
-    } else if (event.key === 'CapsLock') {
-        if (!event.repeat && event.type === "keydown") {
-            typeCase(shift,capslock) ? toUpperCase() : toLowerCase();
-            capslock = !capslock
-            drowKeyboaard();
-            addStule(event.keyCode)
-        }
-        if (event.type === "keyup") {
-            removeStule()
-        }
     }
-    else {
 
+    else {
         if (event.type === "keydown") {
-            onPressAction(event.key)
+            const TEXTAREA = document.querySelector('#textarea');
+            TEXTAREA.focus()
             drowKeyboaard();
             addStule(event.keyCode)
         }
@@ -79,17 +87,17 @@ export function keyHandler(event) {
 
 function removeStule() {
     const KEYS = document.querySelectorAll('.key');
-    KEYS.forEach(e => e.classList.remove('press'))
+    KEYS?.forEach(e => e.classList.remove('press'))
 }
 function addStule(keyCode) {
     const KEY = document.querySelector(`.key[data-code="${keyCode}"]`);
-    KEY.classList.add('press')
+    KEY?.classList.add('press')
 }
 
-function typeCase(shift,capsLock){
-    if (capsLock){
+function typeCase(shift, capsLock) {
+    if (capsLock) {
         return shift
-    }else{
+    } else {
         return !shift
     }
 
