@@ -385,7 +385,7 @@ export let arrayKeys = [
         keyRU: "",
         keyENG: "",
         code: 16,
-        keyCode: "ShiftRight",
+        keyCode: "ShiftLeft",
         key: "Shift",
         width: '1/3',
         subkey: ""
@@ -511,7 +511,7 @@ export let arrayKeys = [
         keyRU: "",
         keyENG: "",
         code: 17,
-        keyCode: "ControlRight",
+        keyCode: "ControlLeft",
         key: "Ctrl",
         width: 'auto',
         subkey: ""
@@ -529,7 +529,7 @@ export let arrayKeys = [
         keyRU: "",
         keyENG: "",
         code: 18,
-        keyCode: "AltRight",
+        keyCode: "AltLeft",
         key: "Alt",
         width: 'auto',
         subkey: ""

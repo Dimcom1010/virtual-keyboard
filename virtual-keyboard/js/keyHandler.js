@@ -8,7 +8,6 @@ let shift = false
 let alt = false
 
 export function keyHandler(event) {
-
     if (shift && alt) {
         if (event.type === "keydown") {
             addStule(16);
@@ -26,7 +25,7 @@ export function keyHandler(event) {
         if (!event.repeat && event.type === "keydown") {
             onPressAction(event.key)
             drowKeyboaard();
-            addStule(event.keyCode)
+            addStule(event.code)
         }
         if (event.type === "keyup") {
             removeStule()
@@ -37,13 +36,13 @@ export function keyHandler(event) {
             capslock = !capslock
             typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
             drowKeyboaard();
-            addStule(event.keyCode)
+            addStule(event.code)
         }
         if (event.type === "keyup") {
             removeStule()
         }
     }
-    else if (event.key === 'Shift') {
+    else if (event.code === 'ShiftLeft') {
         if (!event.repeat) {
             pressShift();
             drowKeyboaard();
@@ -51,7 +50,7 @@ export function keyHandler(event) {
                 shift = true;
                 typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
                 drowKeyboaard();
-                addStule(event.keyCode);
+                addStule(event.code);
             }
             if (event.type === "keyup") {
                 shift = false;
@@ -61,11 +60,11 @@ export function keyHandler(event) {
             }
         }
     }
-    else if (event.key === 'Alt') {
+    else if (event.code === 'Alt') {
         if (!event.repeat) {
             if (event.type === "keydown") {
                 alt = true;
-                addStule(event.keyCode);
+                addStule(event.code);
             }
             if (event.type === "keyup") {
                 alt = false;
@@ -82,7 +81,7 @@ export function keyHandler(event) {
             languageDefinition(event) === 'eng' && language('eng');
             typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
             drowKeyboaard();
-            addStule(event.keyCode)
+            addStule(event.code)
         }
         if (event.type === "keyup") {
             removeStule()
@@ -90,8 +89,8 @@ export function keyHandler(event) {
     }
 }
 
-function addStule(keyCode) {
-    const KEY = document.querySelector(`.key[data-code="${keyCode}"]`);
+function addStule(code) {
+    const KEY = document.querySelector(`.key[data-code="${code}"]`);
     KEY?.classList.add('press')
 }
 function removeStule() {
