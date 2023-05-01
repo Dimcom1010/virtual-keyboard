@@ -8,7 +8,6 @@ let shift = false
 let arrPressKes = new Set()
 
 export function keyHandler(event) {
-console.log(event);
     event.type === "keydown" && (addStule(event.code))
     event.type === "keyup" && (removeStule(event.code))
 
