@@ -5,18 +5,17 @@ import { languageDefinition } from './language.js'
 
 let capslock = false
 let shift = false
-let alt = false
+let arrPressKes = new Set()
 
 export function keyHandler(event) {
+
+    event.type === "keydown" && (addStule(event.code))
+    event.type === "keyup" && (removeStule(event.code))
 
     if (event.key === 'Tab') {
         if (!event.repeat && event.type === "keydown") {
             onPressAction(event.key)
             drowKeyboaard();
-            addStule(event.code)
-        }
-        if (event.type === "keyup") {
-            removeStule()
         }
     }
     else if (event.key === 'CapsLock') {
@@ -24,10 +23,6 @@ export function keyHandler(event) {
             capslock = !capslock
             typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
             drowKeyboaard();
-            addStule(event.code)
-        }
-        if (event.type === "keyup") {
-            removeStule()
         }
     }
     else if (event.code === 'ShiftLeft') {
@@ -38,30 +33,14 @@ export function keyHandler(event) {
                 shift = true;
                 typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
                 drowKeyboaard();
-                addStule(event.code);
             }
             if (event.type === "keyup") {
                 shift = false;
                 typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
                 drowKeyboaard();
-                removeStule();
             }
         }
-    }
-    else if (event.code === 'Alt') {
-        if (!event.repeat) {
-            if (event.type === "keydown") {
-                alt = true;
-                addStule(event.code);
-            }
-            if (event.type === "keyup") {
-                alt = false;
-                removeStule();
-            }
-        }
-    }
-
-    else {
+    } else {
         if (event.type === "keydown") {
             const TEXTAREA = document.querySelector('#textarea');
             TEXTAREA.focus()
@@ -69,21 +48,32 @@ export function keyHandler(event) {
             languageDefinition(event) === 'eng' && language('eng');
             typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
             drowKeyboaard();
-            addStule(event.code)
         }
-        if (event.type === "keyup") {
-            removeStule()
-        }
+    }
+
+    applyingStyles()
+}
+
+
+function addStule(code) {
+    arrPressKes.add(code)
+}
+
+function removeStule(code) {
+    arrPressKes = new Set([...arrPressKes].filter(e => e !== code))
+}
+
+function applyingStyles() {
+    const arr = [...arrPressKes]
+    if (arr.length) {
+        arr.forEach(e => {
+            const KEY = document.querySelector(`.key[data-code="${e}"]`);
+            KEY?.classList.add('press')
+        })
+    } else {
+        const KEYS = document.querySelectorAll('.key');
+        KEYS.forEach(e => e.classList.remove('press'))
     }
 }
 
-function addStule(code) {
-    const KEY = document.querySelector(`.key[data-code="${code}"]`);
-    KEY?.classList.add('press')
-}
-function removeStule() {
-    const KEYS = document.querySelectorAll('.key');
-    KEYS.forEach(e => e.classList.remove('press'))
-}
-
-function typeCase(shift, capsLock) {return capsLock?!shift:shift}
+function typeCase(shift, capsLock) { return capsLock ? !shift : shift }
