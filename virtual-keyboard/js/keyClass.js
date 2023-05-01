@@ -1,63 +1,67 @@
+import { keyHandler } from './keyHandler.js'
 export function createKey(key) {
-    const BODY = document.querySelector('#keyboard');
+    const keyboard = document.querySelector('#keyboard');
     const keyElement = document.createElement('button');
     keyElement.className = "key";
-    keyElement.dataset.code=`${key.code}`;
+    keyElement.dataset.code = `${key.code}`;
     keyElement.style.gridColumn = `${key.width}`;
     keyElement.innerHTML = `${key.key}`;
 
-    const subkey=document.createElement('div');
+    const subkey = document.createElement('div');
     subkey.className = "key__subkey";
     subkey.innerHTML = `${key.subkey}`;
     keyElement.appendChild(subkey);
 
     _addEvent(keyElement, key.key);
-    BODY.append(keyElement);
+    keyboard.append(keyElement);
 }
 
 export function onPressAction(value) {
-    // console.log('onPressAction *******',value)
+
     const TEXTAREA = document.querySelector('#textarea');
     TEXTAREA.focus()
-    let textareaValue = TEXTAREA.value
+    const positionCaret = _getCaretPosition(TEXTAREA)
+    const textareaValue = TEXTAREA.value
 
     if (value === 'Backspace') {
-        // TEXTAREA.value = textareaValue.slice(0, -1)
-        const positionCaret = _getCaretPosition(TEXTAREA)
-        const value=TEXTAREA.value
-        console.log('positionCaret',positionCaret)
-        console.log('value pre|',value)
-
-        console.log('value post|',value)
-
-        // TEXTAREA.value = textareaValue.substr( 0, positionCaret ) + textareaValue.substr( positionCaret + value.length )
-        // TEXTAREA.setSelectionRange(positionCaret+1,positionCaret+1);
-    } else if (value === 'Enter') {
-        TEXTAREA.value = textareaValue + '\n'
-    } else if (value === 'Control') {
-        console.log(value);
-    } else if (value === 'Meta') {
-        console.log('WIN');
+        TEXTAREA.value = [...textareaValue.split('').slice(0, positionCaret - 1), ...textareaValue.split('').slice(positionCaret, Infinity)].join('');
+        TEXTAREA.setSelectionRange(positionCaret - 1, positionCaret - 1);
+    } else if (value === 'ENTER') {
+        TEXTAREA.value = [...textareaValue.split('').slice(0, positionCaret), '\n', ...textareaValue.split('').slice(positionCaret, Infinity)].join('')
+        TEXTAREA.setSelectionRange(positionCaret + 1, positionCaret + 1);
+    } else if (value === 'DEL') {
+        TEXTAREA.value = [...textareaValue.split('').slice(0, positionCaret), ...textareaValue.split('').slice(positionCaret + 1, Infinity)].join('')
+        TEXTAREA.setSelectionRange(positionCaret, positionCaret);
+    } else if (value === 'Tab') {
+        TEXTAREA.value = [...textareaValue.split('').slice(0, positionCaret), '\t', ...textareaValue.split('').slice(positionCaret, Infinity)].join('')
+        TEXTAREA.setSelectionRange(positionCaret + 1, positionCaret + 1);
+    } else if (value === 'Caps Lock') {
+        keyHandler({ key: 'CapsLock', type: "keydown" })
+    } else if (value === 'Shift') {
+        keyHandler({ key: value, type: "keydown" })
+    } else if (value === 'Ctrl') {
+        // console.log(value);
+    } else if (value === 'Win') {
+        // console.log(value);
     } else if (value === 'Alt') {
+        // console.log(value);
+    } else if (value === '&#8656;') {
+        TEXTAREA.setSelectionRange(positionCaret - 1, positionCaret - 1);
+    } else if (value === '&#8658;') {
+        TEXTAREA.setSelectionRange(positionCaret + 1, positionCaret + 1);
+    } else if (value === '&#8657;') {
         console.log(value);
-    } else if (value === 'ArrowLeft') {
-        console.log(value);
-    } else if (value === 'ArrowRight') {
-        console.log(value);
-    } else if (value === 'ArrowUp') {
-        console.log(value);
-    } else if (value === 'ArrowDown') {
+    } else if (value === '&#8659;') {
         console.log(value);
     } else {
-            const positionCaret = _getCaretPosition(TEXTAREA)
-            TEXTAREA.value = textareaValue.substr( 0, positionCaret ) + value  + textareaValue.substr( positionCaret-1 + value.length )
-            TEXTAREA.setSelectionRange(positionCaret+1,positionCaret+1);
+        TEXTAREA.value = [...textareaValue.split('').slice(0, positionCaret), value, ...textareaValue.split('').slice(positionCaret, Infinity)].join('')
+        TEXTAREA.setSelectionRange(positionCaret + 1, positionCaret + 1);
     }
 }
 
 // нажатие мышью
 const _addEvent = (keyElement, value) => {
-    keyElement.addEventListener("click", ()=> onPressAction(value))
+    keyElement.addEventListener("click", () => onPressAction(value))
 }
 
 function _getCaretPosition(element) {
