@@ -1,0 +1,106 @@
+@charset "UTF-8";
+/* цвета */
+* {
+  box-sizing: content-box;
+}
+
+body {
+  background-color: #cdcdcd;
+  padding: 50px;
+  margin: 0;
+  box-sizing: content-box;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.key {
+  position: relative;
+  font-weight: 600;
+  min-width: 1em;
+  color: #626262;
+  padding: 1.2em 1em;
+  background: #ffffff;
+  font-size: 1.3em;
+  border: 2px solid #cacaca;
+  border-radius: 0.75em;
+  transition: transform 0.15s;
+  transform-style: preserve-3d;
+}
+.key::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #a8a8a8;
+  border-radius: inherit;
+  transform: translate3d(0, 0.6em, -1em);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.key:hover {
+  background: #e8e8e8;
+  transform: translateY(0.1em);
+}
+.key:hover::before {
+  transform: translate3d(0, 0.5em, -1em);
+}
+.key:active {
+  background: #e8e8e8;
+  transform: translateY(0.6em);
+}
+.key:active::before {
+  transform: translate3d(0, 0, -1em);
+}
+.key.press {
+  background: #e8e8e8;
+  transform: translateY(0.6em);
+}
+.key.press::before {
+  transform: translate3d(0, 0, -1em);
+}
+
+.key__subkey {
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+}
+
+#keyboard {
+  margin: auto;
+  max-width: 1700px;
+  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+}
+
+#textarea {
+  font-size: 2em;
+  line-height: 1em;
+  padding: 0.5em;
+  caret-color: #999999;
+}
+
+/*# sourceMappingURL=style.css.map */
