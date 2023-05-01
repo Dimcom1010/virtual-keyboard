@@ -590,42 +590,38 @@ export let arrayKeys = [
     }
 ]
 
+// the values of the keys are transformed into uppercase
 export function toUpperCase() {
-    console.log('2')
     arrayKeys = arrayKeys.map(e => {
-        if (e.key.length == 1) {
-            e.key = e.key.toUpperCase()
-        }
+        e.key.length == 1 && (e.key = e.key.toUpperCase())
         return e
     })
 }
+
+// the values of the keys are transformed into lowercase
 export function toLowerCase() {
-    console.log('1')
     arrayKeys = arrayKeys.map(e => {
-        if (e.key.length == 1) {
-            e.key = e.key.toLowerCase()
-        }
+        e.key.length == 1 && (e.key = e.key.toLowerCase())
         return e
     })
 }
+
+//changing the case when you click on the shift
 export function pressShift() {
     arrayKeys = arrayKeys.map(e => {
-        if (e.subkey.length) {
-            [e.key, e.subkey] = [e.subkey, e.key];
-        }
+        e.subkey.length && ([e.key, e.subkey] = [e.subkey, e.key]);
         return e
     })
 }
-export function language(lang) {
-    console.log(lang);
-    if (lang == 'ru') {
-        //
-        arrayKeys.forEach(e => e.keyCode.startsWith('Key') == 1 && (e.key = e.keyRU))
-    } else {
-        // 
-        arrayKeys.forEach(e => e.keyCode.startsWith('Key') == 1 && (e.key = e.keyENG))
-    }
 
+//changing the language
+export function language(lang) {
+    const filter = (e, l) => {
+        e.keyCode.startsWith('Key') == 1 && (e.key = e[l]);
+    }
+    (lang == 'ru') ?
+        (arrayKeys.forEach(e => filter(e, 'keyRU'))) :
+        (arrayKeys.forEach(e => filter(e, 'keyENG')));
 
 }
 

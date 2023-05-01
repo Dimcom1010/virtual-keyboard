@@ -1,13 +1,11 @@
 import { pressShift, toUpperCase, toLowerCase, language } from './arrKeys.js'
 import { drowKeyboaard } from './index.js'
-import { onPressAction } from './keyClass.js'
+import { onPressAction } from './onPressAction.js'
 import { languageDefinition } from './language.js'
-
 
 let capslock = false
 let shift = false
 let alt = false
-
 
 export function keyHandler(event) {
 
@@ -23,7 +21,8 @@ export function keyHandler(event) {
             removeStule();
         }
     }
-    else if (event.key === 'Tab') {
+    else 
+    if (event.key === 'Tab') {
         if (!event.repeat && event.type === "keydown") {
             onPressAction(event.key)
             drowKeyboaard();
@@ -47,8 +46,6 @@ export function keyHandler(event) {
     else if (event.key === 'Shift') {
         if (!event.repeat) {
             pressShift();
-            
-
             drowKeyboaard();
             if (event.type === "keydown") {
                 shift = true;
@@ -102,15 +99,4 @@ function removeStule() {
     KEYS.forEach(e => e.classList.remove('press'))
 }
 
-
-function typeCase(shift, capsLock) {
-console.log('shift',shift)
-console.log('capsLock',capsLock)
-
-    if (capsLock) {
-        return !shift
-    } else {
-        return shift
-    }
-
-}
+function typeCase(shift, capsLock) {return capsLock?!shift:shift}

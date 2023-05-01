@@ -1,17 +1,12 @@
-const rusLower = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-const rusUpper = rusLower.toUpperCase()
-const enLower = 'abcdefghijklmnopqrstuvwxyz'
-const enUpper = enLower.toUpperCase()
-const rus = rusLower + rusUpper
-const en = enLower + enUpper
+const rusL = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+const enL = 'abcdefghijklmnopqrstuvwxyz'
+const rusU= rusL.toUpperCase()
+const enU = enL.toUpperCase()
+const rus = rusL + rusU
+const en = enL + enU
 
+//input language detection function
 export function languageDefinition(e){
-    if (rus.includes(e.key)) {
-        return 'ru'
-    } else if (en.includes(e.key)) {
-        return 'eng'
-    } else {
-        return ''
-    }
+    return rus.includes(e.key)?'ru':en.includes(e.key)?'eng':''
 }
 	

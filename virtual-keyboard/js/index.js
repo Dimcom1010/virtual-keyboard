@@ -3,16 +3,14 @@ import { init } from './init.js'
 import { keyHandler } from './keyHandler.js'
 import { arrayKeys } from './arrKeys.js'
 
-
+// adding all the necessary elements to DOM
 init()
 
+//adding listeners to keyboard keystrokes
 document.addEventListener('keydown', (event) => keyHandler(event));
 document.addEventListener("keyup", (event) =>  keyHandler(event));
 
-
-
-
-//add keys on keybord
+//redrawing
 export function drowKeyboaard() {
   const KEYBOARD = document.querySelector('#keyboard');
   KEYBOARD.innerHTML = '';
