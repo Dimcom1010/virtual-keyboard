@@ -360,6 +360,7 @@ export let arrayKeys = [
         keyCode: "Semicolon",
         key: ";",
         width: 'auto',
+        // eslint-disable-next-line no-useless-escape
         subkey: "\:"
     },
     {
