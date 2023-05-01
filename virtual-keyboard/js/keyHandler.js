@@ -8,19 +8,7 @@ let shift = false
 let alt = false
 
 export function keyHandler(event) {
-    if (shift && alt) {
-        if (event.type === "keydown") {
-            addStule(16);
-            addStule(18);
-        }
-        if (event.type === "keyup") {
-            typeCase(shift, capslock) ? toUpperCase() : toLowerCase();
-            shift = false
-            drowKeyboaard();
-            removeStule();
-        }
-    }
-    else 
+
     if (event.key === 'Tab') {
         if (!event.repeat && event.type === "keydown") {
             onPressAction(event.key)

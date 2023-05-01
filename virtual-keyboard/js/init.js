@@ -14,7 +14,7 @@ export function init() {
     const text = document.createElement('div');
     text.id = 'text'
 
-    text.innerHTML='<p>Добрый день) Раскладку клавиатуры можете поменять при помощи сочетаний клавиш <b> Shift + ALT (левые)</b>, раскладка применится при нажатии на любую букву на клавиатуре</p><p>Ещё один нюанс у меня на клавиатуре есть только правая клавиша <b>Win</b> у вас скорее всего есть и правая и левая поэтому просьба тестировать нажатиеименно правой клавиши) спасибо!</p><p>Hi! You can change the keyboard layout using the keyboard shortcuts <b> Shift + ALT  (left)</b>, the layout will be applied when you click on any letter on the keyboard</p><p>I have only the right <b> Win</b> key on my keyboard, you most likely have both the right and left, so please test pressing the right key by name) thank you!</p>'
+    text.innerHTML='<p>Добрый день) Раскладка меняется в зависимости от вводимы символов при вводе кириллицы она поменяется на русскую раскладку при вводе с клавиатуры латинских символов раскладка поменяется на английскую </p><p>Ещё один нюанс у меня на клавиатуре есть только правая клавиша <b>Win</b> у вас скорее всего есть и правая и левая поэтому просьба тестировать нажатиеименно правой клавиши) спасибо!</p><p>Hi! The layout changes depending on the characters you enter when you type Cyrillic, it will change to the Russian layout when you type Latin characters from the keyboard, the layout will change to English</p><p>I have only the right <b> Win</b> key on my keyboard, you most likely have both the right and left, so please test pressing the right key by name) thank you!</p>'
     
     //append textarea and keyboard in DOM
     const BODY = document.querySelector('#body');
