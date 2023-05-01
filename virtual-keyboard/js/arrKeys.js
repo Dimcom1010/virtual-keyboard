@@ -591,6 +591,7 @@ export let arrayKeys = [
 ]
 
 export function toUpperCase() {
+    console.log('2')
     arrayKeys = arrayKeys.map(e => {
         if (e.key.length == 1) {
             e.key = e.key.toUpperCase()
@@ -599,6 +600,7 @@ export function toUpperCase() {
     })
 }
 export function toLowerCase() {
+    console.log('1')
     arrayKeys = arrayKeys.map(e => {
         if (e.key.length == 1) {
             e.key = e.key.toLowerCase()
@@ -614,15 +616,15 @@ export function pressShift() {
         return e
     })
 }
-export function language() {
-
-    // arrayKeys = arrayKeys.map(e => {
-    //     const item = eng?arrayKeysENG:arrayKeysRU.find(i => i.keyCode === e.keyCode)
-    //     if (item) {
-    //         e.key = item.key
-    //     }
-    //     return e
-    // })
+export function language(lang) {
+    console.log(lang);
+    if (lang == 'ru') {
+        //
+        arrayKeys.forEach(e => e.keyCode.startsWith('Key') == 1 && (e.key = e.keyRU))
+    } else {
+        // 
+        arrayKeys.forEach(e => e.keyCode.startsWith('Key') == 1 && (e.key = e.keyENG))
+    }
 
 
 }

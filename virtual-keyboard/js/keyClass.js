@@ -1,4 +1,5 @@
 import { keyHandler } from './keyHandler.js'
+
 export function createKey(key) {
     const keyboard = document.querySelector('#keyboard');
     const keyElement = document.createElement('button');
@@ -17,11 +18,10 @@ export function createKey(key) {
 }
 
 export function onPressAction(value) {
-
     const TEXTAREA = document.querySelector('#textarea');
-    TEXTAREA.focus()
-    const positionCaret = _getCaretPosition(TEXTAREA)
-    const textareaValue = TEXTAREA.value
+    const positionCaret = _getCaretPosition(TEXTAREA);
+    const textareaValue = TEXTAREA.value;
+    TEXTAREA.focus();
 
     if (value === 'Backspace') {
         TEXTAREA.value = [...textareaValue.split('').slice(0, positionCaret - 1), ...textareaValue.split('').slice(positionCaret, Infinity)].join('');
@@ -59,11 +59,13 @@ export function onPressAction(value) {
     }
 }
 
-// нажатие мышью
+
+// add keys EventListener
 const _addEvent = (keyElement, value) => {
     keyElement.addEventListener("click", () => onPressAction(value))
 }
 
+// function return position caret
 function _getCaretPosition(element) {
     if (element.selectionStart) {
         return element.selectionStart;
