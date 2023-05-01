@@ -1,5 +1,3 @@
-
-
 export function createKey(key) {
     const BODY = document.querySelector('#keyboard');
     const keyElement = document.createElement('button');
@@ -7,10 +5,15 @@ export function createKey(key) {
     keyElement.dataset.code=`${key.code}`;
     keyElement.style.gridColumn = `${key.width}`;
     keyElement.innerHTML = `${key.key}`;
+
+    const subkey=document.createElement('div');
+    subkey.className = "key__subkey";
+    subkey.innerHTML = `${key.subkey}`;
+    keyElement.appendChild(subkey);
+
     _addEvent(keyElement, key.key);
     BODY.append(keyElement);
 }
-
 
 export function onPressAction(value) {
     // console.log('onPressAction *******',value)
@@ -51,7 +54,6 @@ export function onPressAction(value) {
             TEXTAREA.setSelectionRange(positionCaret+1,positionCaret+1);
     }
 }
-
 
 // нажатие мышью
 const _addEvent = (keyElement, value) => {
